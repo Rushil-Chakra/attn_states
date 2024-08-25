@@ -20,3 +20,11 @@ repos:
         require_serial: true
         types_or: [python, pyi, jupyter]
         additional_dependencies: [".[jupyter]"]
+-   repo: local
+    hooks:
+      - id: pre-env-update
+        name: pre-env-update
+        description: "Update conda env file"
+        entry: .git/hooks/pre-env-update
+        language: script
+        pass_filenames: false
