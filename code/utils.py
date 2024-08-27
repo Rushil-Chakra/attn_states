@@ -1,7 +1,7 @@
 from typing import Literal, Sequence
 
 import numpy as np
-import multiprocess
+import multiprocessing
 import platform
 from allensdk.brain_observatory.behavior.behavior_project_cache import (
     VisualBehaviorNeuropixelsProjectCache,
@@ -95,7 +95,7 @@ def parallel_session_map(
         Dictionary where session_id are the keys and the outputs of the function called
         are the values.
     """
-    max_cores = multiprocess.cpu_count()
+    max_cores = multiprocessing.cpu_count()
     if cores > max_cores:
         cores = max_cores
         print(f"Not enough cores. Using {max_cores} instead.")
@@ -104,7 +104,7 @@ def parallel_session_map(
     if session_type not in ["behavior", "ephys"]:
         raise AttributeError("session_type must be one of behavior or ephys")
 
-    pool = multiprocess.Pool(cores)
+    pool = multiprocessing.Pool(cores)
 
     cache_dir = get_data_root()
     cache = VisualBehaviorNeuropixelsProjectCache.from_local_cache(
@@ -120,6 +120,7 @@ def parallel_session_map(
     for i, batch in enumerate(batches):
         print(f"processing batch {i+1}/{len(batches)}...")
         func_session_list = [(func, session_id, session_type, cache) for session_id in batch]
-        session_output["sessions"].extend(pool.starmap(session_call, func_session_list))
+        batch_results = pool.starmap(session_call, func_session_list)
+        session_output["sessions"].extend(batch_results)
 
     return session_output
