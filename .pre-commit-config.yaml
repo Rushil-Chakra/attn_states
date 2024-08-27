@@ -2,14 +2,6 @@ repos:
 -   repo: https://github.com/psf/black-pre-commit-mirror
     rev: 24.8.0
     hooks:
-      - id: black
-        name: black
-        description: "Black: The uncompromising Python code formatter"
-        entry: black
-        language: python
-        minimum_pre_commit_version: 2.9.2
-        require_serial: true
-        types_or: [python, pyi]
       - id: black-jupyter
         name: black-jupyter
         description:
