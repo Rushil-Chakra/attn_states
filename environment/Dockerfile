@@ -1,4 +1,4 @@
-# hash:sha256:f4c7655b396093eab608d6f76abca1a9116c45dca892d9f079a1fb82800a36d9
+# hash:sha256:15b71ab8ad8619efbe1dcfe581d26d54719de04214cdd9b700cb8710e912ab18
 ARG REGISTRY_HOST
 FROM $REGISTRY_HOST/codeocean/jupyterlab:3.6.1-miniconda4.12.0-python3.9-ubuntu20.04
 
@@ -10,6 +10,7 @@ COPY git-askpass /
 
 RUN conda install -y \
         matplotlib==3.8.4 \
+        nbconvert==7.2.9 \
         numpy==1.23.5 \
         pandas==1.5.3 \
         scikit-learn==1.5.1 \
