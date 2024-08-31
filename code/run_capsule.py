@@ -19,6 +19,6 @@ def run():
                 "--output",
                 f"~/capsule/results/{session_id}_report.ipynb",
             ]
-        subprocess.run(command, check=True)
+        # subprocess.run(command, check=True)
 
 if __name__ == "__main__": run()
