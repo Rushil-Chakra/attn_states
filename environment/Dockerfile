@@ -1,4 +1,4 @@
-# hash:sha256:ce8ec86c97d8dc88f67cd40c6723cb57d6bf5bd677dbfbcf85c1a8f20d54f46e
+# hash:sha256:0a5c1c02a9c37cc84e648a56685a650fecccb4bef60f34d6094d8e6cd253373d
 ARG REGISTRY_HOST
 FROM $REGISTRY_HOST/codeocean/jupyterlab:3.6.1-miniconda4.12.0-python3.9-ubuntu20.04
 
@@ -20,5 +20,6 @@ RUN conda install -y \
 RUN pip install -U --no-cache-dir \
     allensdk==2.16.2 \
     brain-observatory-utilities==0.4.0 \
+    hmmlearn==0.3.2 \
     multiprocess==0.70.16 \
     nbconvert==7.16.4
