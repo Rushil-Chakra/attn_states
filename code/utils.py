@@ -1,6 +1,9 @@
-from typing import Literal, Sequence
+from typing import Literal, Sequence, Union
+from allensdk.brain_observatory.ecephys.behavior_ecephys_session import BehaviorEcephysSession
 
 import numpy as np
+import pandas as pd
+
 import multiprocessing
 import platform
 from allensdk.brain_observatory.behavior.behavior_project_cache import (
